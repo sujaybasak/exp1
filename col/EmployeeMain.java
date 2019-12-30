@@ -2,6 +2,8 @@ package col;
 
 import java.util.*;
 
+import exception.IncorrectIdException;
+
 public class EmployeeMain {
 	
 	public void print() {
@@ -30,8 +32,11 @@ public class EmployeeMain {
 	}
 	Map<Integer,Employee> store =new HashMap<>();
 	public void execute() {
+		try {
 		Employee e1 = new Employee(1,"Sujay");
 		Manager m1 = new Manager(2,"Sourav");
+		addEmployee(e1);
+		addEmployee(m1);
 		e1.addSalary(500);
 		m1.addSalary(1000);
 		store.put(1,e1);
@@ -40,7 +45,18 @@ public class EmployeeMain {
 		print();
 		Employee fetched =findById(2);
 		System.out.println(fetched.getName());
+		}
+		catch (IncorrectIdException e) {
+			System.out.println("incorrect id");
+		}
 		
+	}
+	public void addEmployee(Employee e) {
+		int id = e.getId();
+		if(id<0) {
+			throw new IncorrectIdException("Id is negetive");
+		}
+		store.put(id, e);
 	}
 	
 	public static void main(String[] args) {
