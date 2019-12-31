@@ -34,4 +34,9 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 
 	}
 
+	@Override
+	public void transferMoney(CustomerWallet sender, CustomerWallet receiver, double amt) {
+		dao.transferMoney(sender, receiver, amt);
+	}
+
 }

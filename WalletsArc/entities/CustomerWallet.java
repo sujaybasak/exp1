@@ -33,13 +33,7 @@ public class CustomerWallet {
 		this.balance += balance;
 	}
 
-	public void transferMoney(CustomerWallet acc, double amt) {
-		if (this.balance >= amt) {
-			acc.addBalance(amt);
-			balance = balance - amt;
-		}
-
-	}
+	
 
 	public CustomerWallet(String mobileNo, String name, double balance) {
 		this.mobileNo = mobileNo;
@@ -70,5 +64,7 @@ public class CustomerWallet {
 		return e.mobileNo.equals(this.mobileNo) ;
 
 	}
+
+	
 
 }

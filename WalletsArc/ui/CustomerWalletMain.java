@@ -26,12 +26,12 @@ public class CustomerWalletMain {
 	            service.addCustomer(c2);
 	            CustomerWallet fetched1 = service.findByMobileNo("9652876529");
 	            CustomerWallet fetched2 = service.findByMobileNo("9874538976");
-	            System.out.println(fetched1.getName());
-	            System.out.println(fetched2.getName());
-	            System.out.println("********printing all employees****");
+	            System.out.println("fetched details: "+fetched1.getName());
+	            System.out.println("fetched details: "+fetched2.getName());
+	            System.out.println("********printing all employees after transactions****");
 	            Set<CustomerWallet> customers = service.allCustomer();
 	            print(customers);
-	            c1.transferMoney(c2, 400);
+	            service.transferMoney(c1, c2, 400);
 	    		print(customers);
 	        }catch (Throwable e){
 	            e.printStackTrace();
@@ -39,8 +39,9 @@ public class CustomerWalletMain {
 	        }
 	    }
 	  void print(Collection<CustomerWallet>customers){
+		  System.out.println("Customer Wallet Details");
 	        for (CustomerWallet c:customers){
-	            System.out.println(c.getName()+" "+c.getBalance());
+	            System.out.println(c.getName()+" "+c.getBalance()+" "+c.getMobileNo());
 	        }
 	    }
 }
